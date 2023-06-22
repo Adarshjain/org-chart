@@ -2,7 +2,7 @@ import { Employee, RecursiveType } from "../types";
 import '../styles/Employee.css';
 import { SyntheticEvent, useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchEmployee, setCurrentEmployee, setDraggedState, State, updateEmployeeManager } from "../store/reducer.ts";
+import { fetchEmployee, setCurrentEmployee, State, updateEmployeeManager } from "../store/reducer.ts";
 import { isValidDropTarget } from "../tree.ts";
 import EmployeeInfo from "./EmployeeInfo.tsx";
 
@@ -34,11 +34,6 @@ export function EmployeeBlock(
   const tickClass = tickPos ? tickPos.map(pos => ` employee-item--tick-${pos}`).join('') : '';
   const finalClassNames = `flex drop-target ${blockClass}${tickClass}${draggable ? ' relative' : ''}`;
 
-  //Set drag state to false when destroyed
-  useEffect(() => () => {
-    dispatch(setDraggedState(false))
-  });
-
   useEffect(() => {
     if (!draggedEmployee || !employee) {
       setIsValidDrop(false);
@@ -50,13 +45,11 @@ export function EmployeeBlock(
   const onDragStart = (event: SyntheticEvent) => {
     (event.target as HTMLDivElement).classList.add('employee-item--transparent-line');
     dispatch(setCurrentEmployee(employee));
-    dispatch(setDraggedState(true));
   }
 
   const onDragEnd = (event: SyntheticEvent) => {
     (event.target as HTMLDivElement).classList.remove('employee-item--transparent-line');
     dispatch(setCurrentEmployee(null));
-    dispatch(setDraggedState(false));
   }
 
   const onDragOver = (e: SyntheticEvent) => {

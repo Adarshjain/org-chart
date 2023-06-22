@@ -17,24 +17,19 @@ export const updateEmployeeManager = createAsyncThunk<Employee[], { employeeId: 
 )
 
 export interface State {
-  isDragged: boolean;
   isLoadingData: boolean;
   currentEmployee: null | RecursiveType<Employee>
   employees: Employee[]
 }
 
 export const reducers = createSlice({
-  name: 'isDragged',
+  name: 'store',
   initialState: {
-    isDragged: false,
     isLoadingData: false,
     currentEmployee: null,
     employees: []
   },
   reducers: {
-    setDraggedState: (state: State, action) => {
-      state.isDragged = action.payload;
-    },
     setCurrentEmployee: (state: State, action) => {
       state.currentEmployee = action.payload;
     }
@@ -53,6 +48,6 @@ export const reducers = createSlice({
   },
 })
 
-export const { setDraggedState, setCurrentEmployee } = reducers.actions
+export const { setCurrentEmployee } = reducers.actions
 
 export default reducers.reducer
