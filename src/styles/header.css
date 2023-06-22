@@ -1,0 +1,11 @@
+.header {
+    padding-inline: 24px;
+    padding-block: 12px;
+    border-bottom: 1px solid #E6EAF0;
+    width: 100%;
+    min-height: 64px;
+
+    & h2 {
+        margin: 0;
+    }
+}

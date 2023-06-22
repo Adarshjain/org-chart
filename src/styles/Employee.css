@@ -1,0 +1,107 @@
+:root {
+    --dark-2: #A6A7AB;
+    --dark-1: #C1C2C5;
+}
+
+.employee-item {
+    display: flex;
+    align-items: start;
+    padding-inline: 10px;
+    padding-block: 4px;
+    transition: all 0.2s ease;
+    border-bottom: 1px solid #E6EAF0;
+    min-width: 260px;
+
+    & .employee-item__avatar {
+        margin-inline-end: 8px;
+        margin-block-start: 8px;
+        border-radius: 6px;
+    }
+
+    &:hover {
+        background-color: #F1F3F5;
+    }
+}
+
+.employee-item--block {
+    display: inline-flex;
+    border: 1px solid var(--dark-2);
+    border-radius: 4px;
+
+    &:hover {
+        background-color: white;
+    }
+}
+
+.employee-item--tick-bottom {
+    position: relative;
+
+    &:before {
+        content: '';
+        width: 1px;
+        height: 17px;
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        background-color: var(--dark-2);
+    }
+}
+
+.employee-item--tick-top {
+    position: relative;
+
+    &:after {
+        content: '';
+        width: 1px;
+        height: 17px;
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        background-color: var(--dark-2);
+    }
+}
+
+.employee-item--tick-left {
+    position: relative;
+
+    &:before {
+        content: '';
+        width: 16px;
+        height: 1px;
+        position: absolute;
+        top: 50%;
+        right: 100%;
+        background-color: var(--dark-2);
+    }
+}
+
+.employee-item--tick-bottom-left {
+    position: relative;
+
+    &:before {
+        content: '';
+        width: 1px;
+        height: 16px;
+        position: absolute;
+        top: 100%;
+        left: 16px;
+        background-color: var(--dark-2);
+    }
+}
+
+.line {
+    position: absolute;
+    background-color: var(--dark-2);
+}
+
+.employee-item--transparent-line {
+    &:before,
+    &:after {
+        display: none;
+        background-color: transparent;
+    }
+}
+
+.drop-target * {
+    cursor: move;
+}
